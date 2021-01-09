@@ -22,7 +22,7 @@ def get(event, context):
 
     target_language = event.get('pathParameters').get('language')
     comprehend = boto3.client('comprehend')
-    source_language = comprehend.detect_dominant_language(text).get('Languages')[0].get('LanguageCode')
+    source_language = comprehend.detect_dominant_language(Text=text).get('Languages')[0].get('LanguageCode')
 
     translator = boto3.client('translate')
     translation = translator.translate_text(
