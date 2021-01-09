@@ -23,12 +23,12 @@ provider:
     - Effect: Allow
       Action:
         - comprehend:DetectDominantLanguage
-      Resource: "arn:aws:comprehend:${opt:region, self:provider.region}:*"
+      Resource: "*"
 
     - Effect: Allow
       Action:
         - translate:TranslateText
-      Resource: "arn:aws:translate:${opt:region, self:provider.region}:*"
+      Resource: "*"
 
 
 functions:
