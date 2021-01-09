@@ -45,6 +45,14 @@ functions:
           method: get
           cors: true
 
+  translated:
+    handler: todos/translated.get
+    events:
+      - http:
+          path: todos/{id}/{language}
+          method: get
+          cors: true
+
   update:
     handler: todos/update.update
     events:
@@ -68,12 +76,10 @@ resources:
       DeletionPolicy: Retain
       Properties:
         AttributeDefinitions:
-          -
-            AttributeName: id
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          -
-            AttributeName: id
+          - AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
