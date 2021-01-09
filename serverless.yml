@@ -18,9 +18,18 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-        - comprehend:DetectDominantLanguage
-        - translate:TranslateText
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+    - Effect: Allow
+        Action:
+          - comprehend:DetectDominantLanguage
+        Resource: "arn:aws:comprehend:${opt:region, self:provider.region}:*"
+
+    - Effect: Allow
+        Action:
+          - translate:TranslateText
+        Resource: "arn:aws:translate:${opt:region, self:provider.region}:*"
+
 
 functions:
   create:
